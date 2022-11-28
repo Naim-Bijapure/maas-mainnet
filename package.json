@@ -70,5 +70,8 @@
     "dependencies": {},
     "devDependencies": {
         "husky": "^7.0.2"
+    },
+    "engines": {
+        "node": "16.15.1"
     }
 }
