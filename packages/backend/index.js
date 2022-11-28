@@ -12,6 +12,7 @@ const port = Number(process.env.PORT) || 49899;
 let transactions = {};
 let wallets = {};
 
+app.use(express.static("build"));
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -147,7 +148,9 @@ app.post("/updateOwners/:ownerAddress/:walletAddress", function (request, respon
 });
 
 // SERVING PATHS FROM REACT FOR ALL ROUTES
-app.use(express.static("build"));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./build", "index.html"));
+});
 
 if (fs.existsSync("server.key") && fs.existsSync("server.cert")) {
     https
