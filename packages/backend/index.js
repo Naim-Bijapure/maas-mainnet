@@ -3,6 +3,8 @@ var fs = require("fs");
 const https = require("https");
 var cors = require("cors");
 var bodyParser = require("body-parser");
+const path = require("path");
+
 var app = express();
 
 const port = Number(process.env.PORT) || 49899;
@@ -15,7 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", function (req, res) {
+app.get("/status", function (req, res) {
     console.log("/");
     res.status(200).send("hello world");
 });
@@ -143,6 +145,9 @@ app.post("/updateOwners/:ownerAddress/:walletAddress", function (request, respon
 
     response.status(200).send(wallets[ownerAddress]);
 });
+
+// SERVING PATHS FROM REACT FOR ALL ROUTES
+app.use(express.static("build"));
 
 if (fs.existsSync("server.key") && fs.existsSync("server.cert")) {
     https

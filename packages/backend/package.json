@@ -4,8 +4,9 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "start": "node index.js",
-        "deploy": "git add . && git commit -m Heroku && git push heroku master"
+        "start": "yarn cp:bundle && node index.js",
+        "deploy": "git add . && git commit -m Heroku && git push heroku master",
+        "cp:bundle":"cp -rf ../react-app/build ."
     },
     "dependencies": {
         "body-parser": "^1.20.0",
