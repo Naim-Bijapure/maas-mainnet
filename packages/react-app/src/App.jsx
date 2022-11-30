@@ -365,8 +365,8 @@ function App(props) {
       // window.location.reload();
       // }, 1);
 
-      if (switchTx) {
-      }
+      // if (switchTx) {
+      // }
     }
   };
 
@@ -400,12 +400,14 @@ function App(props) {
     });
     // detect Network account change
     window.ethereum?.on("networkChanged", function () {
-      if (deployedContracts[targetNetwork.chainId] === undefined) {
-        console.log("NO FACTORY FOUND LOGING OUT !!!");
-        logoutOfWeb3Modal();
-      } else {
-        window.location.reload();
-      }
+      // on network chagne logout logic disabled
+      // if (deployedContracts[targetNetwork.chainId] === undefined) {
+      //   console.log("NO FACTORY FOUND LOGING OUT !!!");
+      //   logoutOfWeb3Modal();
+      // } else {
+      //   window.location.reload();
+      // }
+      window.location.reload();
     });
   }, []);
 
@@ -690,46 +692,45 @@ function App(props) {
         <WalletActions />
         {MainMenu}
 
-        {Object.keys(writeContracts).length > 0 && Object.keys(readContracts).length > 0 && (
-          <>
-            <Routes
-              // key={currentMultiSigAddress}
-              // allOwnerEvents={allOwnerEvents}
-              BACKEND_URL={BACKEND_URL}
-              DEBUG={DEBUG}
-              targetNetwork={targetNetwork}
-              account={address}
-              address={address}
-              blockExplorer={blockExplorer}
-              contractAddress={contractAddress}
-              contractConfig={contractConfig}
-              contractName={contractName}
-              currentMultiSigAddress={currentMultiSigAddress}
-              customContract={mainnetContracts && mainnetContracts.contracts && mainnetContracts.contracts.DAI}
-              // executeTransactionEvents={executeTransactionEvents}
-              gasPrice={gasPrice}
-              localProvider={localProvider}
-              mainnetContracts={mainnetContracts}
-              mainnetProvider={mainnetProvider}
-              nonce={nonce}
-              // ownerEvents={ownerEvents}
-              poolServerUrl={BACKEND_URL}
-              price={price}
-              readContracts={readContracts}
-              setIsCreateModalVisible={setIsCreateModalVisible}
-              signaturesRequired={signaturesRequired}
-              subgraphUri={props.subgraphUri}
-              tx={tx}
-              userHasMultiSigs={userHasMultiSigs}
-              userSigner={userSigner}
-              writeContracts={writeContracts}
-              yourLocalBalance={yourLocalBalance}
-              reDeployWallet={reDeployWallet}
-              isFactoryDeployed={isFactoryDeployed}
-              contractNameForEvent={contractNameForEvent}
-            />
-          </>
-        )}
+        {/* {Object.keys(writeContracts).length > 0 && Object.keys(readContracts).length > 0 && ( */}
+        <>
+          <Routes
+            // key={currentMultiSigAddress}
+            // allOwnerEvents={allOwnerEvents}
+            BACKEND_URL={BACKEND_URL}
+            DEBUG={DEBUG}
+            targetNetwork={targetNetwork}
+            account={address}
+            address={address}
+            blockExplorer={blockExplorer}
+            contractAddress={contractAddress}
+            contractConfig={contractConfig}
+            contractName={contractName}
+            currentMultiSigAddress={currentMultiSigAddress}
+            customContract={mainnetContracts && mainnetContracts.contracts && mainnetContracts.contracts.DAI}
+            // executeTransactionEvents={executeTransactionEvents}
+            gasPrice={gasPrice}
+            localProvider={localProvider}
+            mainnetContracts={mainnetContracts}
+            mainnetProvider={mainnetProvider}
+            nonce={nonce}
+            // ownerEvents={ownerEvents}
+            poolServerUrl={BACKEND_URL}
+            price={price}
+            readContracts={readContracts}
+            setIsCreateModalVisible={setIsCreateModalVisible}
+            signaturesRequired={signaturesRequired}
+            subgraphUri={props.subgraphUri}
+            tx={tx}
+            userHasMultiSigs={userHasMultiSigs}
+            userSigner={userSigner}
+            writeContracts={writeContracts}
+            yourLocalBalance={yourLocalBalance}
+            reDeployWallet={reDeployWallet}
+            isFactoryDeployed={isFactoryDeployed}
+            contractNameForEvent={contractNameForEvent}
+          />
+        </>
         <ThemeSwitch />
 
         {BurnerWallet}

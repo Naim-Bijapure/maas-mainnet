@@ -2,6 +2,7 @@ import React from "react";
 
 import { Alert, Button, Col, Row } from "antd";
 import { Route, Switch } from "react-router-dom";
+import EmptyWalletAlert from "./components/MultiSig/EmptyWalletAlert";
 
 import "./App.css";
 import { Contract } from "./components";
@@ -48,35 +49,10 @@ const Routes = ({
         <Route exact path="/">
           {!userHasMultiSigs ? (
             <>
-              {isFactoryDeployed !== undefined && (
-                <Row style={{ marginTop: 40 }}>
-                  <Col span={12} offset={6}>
-                    <Alert
-                      message={
-                        <>
-                          ✨{" "}
-                          <Button onClick={() => setIsCreateModalVisible(true)} type="link" style={{ padding: 0 }}>
-                            Create
-                          </Button>{" "}
-                          or select your Multi-Sig ✨
-                        </>
-                      }
-                      type="info"
-                    />
-                  </Col>
-                </Row>
-              )}
-
-              {isFactoryDeployed === undefined && (
-                <Row style={{ marginTop: 40 }}>
-                  <Col span={12} offset={6}>
-                    <Alert
-                      message={<> Sorry multisig not awailable on this network 😥 ( please change the network) </>}
-                      type="error"
-                    />
-                  </Col>
-                </Row>
-              )}
+              <EmptyWalletAlert
+                isFactoryDeployed={isFactoryDeployed}
+                setIsCreateModalVisible={setIsCreateModalVisible}
+              />
             </>
           ) : (
             <>
